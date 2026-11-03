@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	url = "https://groupietrackers.herokuapp.com/api"
+	url = "https://groupietrackers.01edu.ai/api"
 )
 
 var tmpl = template.Must(template.ParseFiles("Template/index.html"))
