@@ -1,21 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GROUPIE-TRACKER</title>
-</head>
-<body>
-    <nav>
-        <a href="/">Retour à l'acceuil</a>
-    </nav>
-
-    <h2>{{.Name}}</h2>
-    <img src="{{.Image}}" alt="Photo de {{.Name}}">
-    <p>Création : {{.CreationDate}}</p>
-    <p>Premier album : {{.FirstAlbum}}</p>
-    <p>Membres : {{range .Members}}{{.}} / {{end}}</p>
-    <p>Lieux : {{range .Location}}{{.}} / {{end}}</p>
-    <p>Dates : {{range .Date}}{{.}} / {{end}}</p>
-</body>
-</html>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{.Name}} — Groupie Tracker</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,89%);margin:auto}header{height:83px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-size:19px;font-weight:bold;letter-spacing:-.7px}.brand span{color:var(--panel)}.back{font-size:12px}.back:hover{text-decoration:underline}.hero{position:relative;display:grid;grid-template-columns:1.15fr 1fr;gap:55px;align-items:center;padding:65px 0 60px}.eyebrow{font-size:10px;letter-spacing:3px;font-weight:bold;color:var(--muted)}.crown{display:block;font-size:35px;color:var(--accent);margin-bottom:20px}h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(85px,12vw,160px);font-weight:400;line-height:.95;letter-spacing:-7px;margin:18px 0 24px}.tagline{font-family:Georgia,serif;font-style:italic;font-size:25px;line-height:1.4;max-width:400px;color:var(--muted)}.lede{font-size:13px;line-height:1.9;color:var(--muted);max-width:350px}.hero-photo{background:var(--panel);position:relative;padding:33px 33px 45px;transform:rotate(3deg);box-shadow:12px 18px 0 var(--shadow)}.hero-photo img{width:100%;display:block;aspect-ratio:1;object-fit:cover;filter:sepia(.18)}.photo-label{display:flex;justify-content:space-between;color:#f4e5c6;font-size:10px;letter-spacing:2px;margin-top:23px}.seal{position:absolute;left:-24px;bottom:35px;width:92px;height:92px;border-radius:50%;background:var(--accent);display:grid;place-content:center;text-align:center;color:#211d1b;font-size:9px;letter-spacing:2px;line-height:1.7;border:5px double var(--panel);transform:rotate(-13deg)}.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:16px 0 60px}.stat{padding:27px 25px;border-right:1px solid var(--line)}.stat:first-child{padding-left:0}.stat:last-child{border:0}.label{font-size:9px;letter-spacing:2px;color:var(--muted);display:block;margin-bottom:12px}.value{font-family:Georgia,serif;font-size:30px}.section-title{display:flex;align-items:baseline;gap:16px;margin-bottom:24px}h2{font-family:Georgia,serif;font-size:34px;font-weight:400;margin:0}.number{font-size:10px;color:var(--muted)}.members{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}.members li{padding:15px 21px;border:1px solid var(--line);font-size:12px;background:#ffffff20}.members-section{padding-bottom:55px}.tour{background:var(--panel);color:#f5ecd9;padding:42px;border-radius:2px;margin-bottom:60px}.tour .number,.tour .label{color:#d5b77d}.tour h2{color:#fff3d9}.tour-intro{font-size:12px;color:#ddc4bc;line-height:1.8;margin-bottom:28px}.tour-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}.tour ul{list-style:none;padding:0;margin:0}.tour li{font-size:13px;line-height:1.7;padding:11px 0;border-bottom:1px solid #ffffff21;overflow-wrap:anywhere}.note{font-size:11px;color:#d9b9b0;line-height:1.7;margin:25px 0 0}footer{padding:0 0 28px;display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}a:focus-visible{outline:3px solid var(--panel);outline-offset:6px}@media(max-width:700px){header{height:70px}.brand{font-size:16px}.hero{grid-template-columns:1fr;gap:30px;padding:35px 0}.hero h1{font-size:100px}.hero-photo{width:82%;margin:0 auto 15px;padding:22px 22px 32px}.tagline{font-size:23px}.stats{margin-bottom:35px}.stat{padding:20px 12px}.value{font-size:22px}.label{font-size:8px;letter-spacing:1px}.tour{padding:25px}.tour-grid{grid-template-columns:1fr;gap:30px}h2{font-size:29px}footer{gap:20px;line-height:1.6}.members li{padding:12px 15px}}
+:root{--bg:#f4eedf;--ink:#34251f;--panel:#771e2c;--accent:#d4b36c;--muted:#78533f;--line:#34251f26;--shadow:#e7deca}
+body[data-artist="1"]{--bg:#f4eedf;--ink:#34251f;--panel:#771e2c;--accent:#d4b36c;--muted:#716451;--line:#34251f30;--shadow:#771e2c25;}
+body[data-artist="2"]{--bg:#edf0d8;--ink:#24382b;--panel:#305441;--accent:#e0bd62;--muted:#716451;--line:#24382b30;--shadow:#30544125;}
+body[data-artist="3"]{--bg:#10121e;--ink:#f2edf8;--panel:#25243c;--accent:#c7a5ff;--muted:#c4bdc8;--line:#f2edf830;--shadow:#25243c25;}
+body[data-artist="3"]{background-image:radial-gradient(ellipse at 90% 12%,#c7a5ff20,transparent 45%);}body[data-artist="3"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #c7a5ff20;}
+body[data-artist="4"]{--bg:#171315;--ink:#fff0e6;--panel:#9b2634;--accent:#ffba66;--muted:#c4bdc8;--line:#fff0e630;--shadow:#9b263425;}
+body[data-artist="4"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="4"] .hero-photo{transform:rotate(2deg);border-bottom:7px solid var(--accent);}body[data-artist="4"] .crown{font-size:45px;}
+body[data-artist="5"]{--bg:#15121b;--ink:#ede6fa;--panel:#342645;--accent:#ba9bdf;--muted:#c4bdc8;--line:#ede6fa30;--shadow:#34264525;}
+body[data-artist="6"]{--bg:#f2e5da;--ink:#443141;--panel:#8b5260;--accent:#edb57c;--muted:#716451;--line:#44314130;--shadow:#8b526025;}
+body[data-artist="7"]{--bg:#151a20;--ink:#eff2f4;--panel:#2b4459;--accent:#96c7de;--muted:#c4bdc8;--line:#eff2f430;--shadow:#2b445925;}
+body[data-artist="7"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="7"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="7"] .seal{border-radius:4px;}
+body[data-artist="8"]{--bg:#ece8dc;--ink:#252822;--panel:#3a4737;--accent:#bd9b62;--muted:#716451;--line:#25282230;--shadow:#3a473725;}
+body[data-artist="8"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="8"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="8"] .seal{border-radius:4px;}
+body[data-artist="9"]{--bg:#151313;--ink:#fff0e6;--panel:#a91d28;--accent:#ffcc66;--muted:#c4bdc8;--line:#fff0e630;--shadow:#a91d2825;}
+body[data-artist="9"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="9"] .hero-photo{transform:rotate(2deg);border-bottom:7px solid var(--accent);}body[data-artist="9"] .crown{font-size:45px;}
+body[data-artist="10"]{--bg:#e4dfcf;--ink:#32372c;--panel:#465443;--accent:#cba16b;--muted:#716451;--line:#32372c30;--shadow:#46544325;}
+body[data-artist="10"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="10"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="10"] .seal{border-radius:4px;}
+body[data-artist="11"]{--bg:#f8e6ee;--ink:#583047;--panel:#a94478;--accent:#eac95d;--muted:#716451;--line:#58304730;--shadow:#a9447825;}
+body[data-artist="12"]{--bg:#191b1b;--ink:#f6efe0;--panel:#46453e;--accent:#d7ba83;--muted:#c4bdc8;--line:#f6efe030;--shadow:#46453e25;}
+body[data-artist="13"]{--bg:#e7edde;--ink:#354338;--panel:#4e6658;--accent:#cbb785;--muted:#716451;--line:#35433830;--shadow:#4e665825;}
+body[data-artist="14"]{--bg:#e5e9ee;--ink:#2a3b50;--panel:#405978;--accent:#d1b781;--muted:#716451;--line:#2a3b5030;--shadow:#40597825;}
+body[data-artist="15"]{--bg:#ede4cf;--ink:#473426;--panel:#78513a;--accent:#d1a44a;--muted:#716451;--line:#47342630;--shadow:#78513a25;}
+body[data-artist="16"]{--bg:#231331;--ink:#fff0e6;--panel:#663071;--accent:#ffc36c;--muted:#c4bdc8;--line:#fff0e630;--shadow:#66307125;}
+body[data-artist="16"]{background-image:radial-gradient(ellipse at 90% 12%,#ffc36c20,transparent 45%);}body[data-artist="16"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #ffc36c20;}
+body[data-artist="17"]{--bg:#211c2b;--ink:#f4e9ff;--panel:#584368;--accent:#eac27d;--muted:#c4bdc8;--line:#f4e9ff30;--shadow:#58436825;}
+body[data-artist="18"]{--bg:#201426;--ink:#f7eafa;--panel:#603077;--accent:#d5a6ed;--muted:#c4bdc8;--line:#f7eafa30;--shadow:#60307725;}
+body[data-artist="18"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="18"] .hero-photo{transform:rotate(2deg);border-bottom:7px solid var(--accent);}body[data-artist="18"] .crown{font-size:45px;}
+body[data-artist="19"]{--bg:#18181b;--ink:#f2eded;--panel:#752a37;--accent:#dbb493;--muted:#c4bdc8;--line:#f2eded30;--shadow:#752a3725;}
+body[data-artist="19"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="19"] .hero-photo{transform:rotate(2deg);border-bottom:7px solid var(--accent);}body[data-artist="19"] .crown{font-size:45px;}
+body[data-artist="20"]{--bg:#e9e5db;--ink:#343d43;--panel:#48616d;--accent:#cba76c;--muted:#716451;--line:#343d4330;--shadow:#48616d25;}
+body[data-artist="21"]{--bg:#f0eccc;--ink:#25362b;--panel:#397449;--accent:#eeb948;--muted:#716451;--line:#25362b30;--shadow:#39744925;}
+body[data-artist="21"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="21"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="21"] .seal{border-radius:4px;}
+body[data-artist="22"]{--bg:#141923;--ink:#eef3fa;--panel:#314c68;--accent:#e7a38d;--muted:#c4bdc8;--line:#eef3fa30;--shadow:#314c6825;}
+body[data-artist="22"]{background-image:radial-gradient(ellipse at 90% 12%,#e7a38d20,transparent 45%);}body[data-artist="22"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #e7a38d20;}
+body[data-artist="23"]{--bg:#172029;--ink:#edf5ec;--panel:#365552;--accent:#dbb66b;--muted:#c4bdc8;--line:#edf5ec30;--shadow:#36555225;}
+body[data-artist="23"]{background-image:radial-gradient(ellipse at 90% 12%,#dbb66b20,transparent 45%);}body[data-artist="23"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #dbb66b20;}
+body[data-artist="24"]{--bg:#191626;--ink:#f1e8ff;--panel:#49315c;--accent:#c59ade;--muted:#c4bdc8;--line:#f1e8ff30;--shadow:#49315c25;}
+body[data-artist="25"]{--bg:#eee8db;--ink:#34312a;--panel:#5e5946;--accent:#c5aa68;--muted:#716451;--line:#34312a30;--shadow:#5e594625;}
+body[data-artist="25"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="25"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="25"] .seal{border-radius:4px;}
+body[data-artist="26"]{--bg:#e8ecdf;--ink:#3b4939;--panel:#607157;--accent:#dbb983;--muted:#716451;--line:#3b493930;--shadow:#60715725;}
+body[data-artist="27"]{--bg:#f2e6ce;--ink:#503b2e;--panel:#886349;--accent:#dab56e;--muted:#716451;--line:#503b2e30;--shadow:#88634925;}
+body[data-artist="28"]{--bg:#101c23;--ink:#e9fbfc;--panel:#175a65;--accent:#84ead9;--muted:#c4bdc8;--line:#e9fbfc30;--shadow:#175a6525;}
+body[data-artist="28"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="28"]{background-image:radial-gradient(ellipse at 90% 12%,#84ead920,transparent 45%);}body[data-artist="28"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #84ead920;}
+body[data-artist="29"]{--bg:#eddfcf;--ink:#49352f;--panel:#885345;--accent:#ddb380;--muted:#716451;--line:#49352f30;--shadow:#88534525;}
+body[data-artist="30"]{--bg:#211a16;--ink:#f3e7ce;--panel:#684931;--accent:#cfa65b;--muted:#c4bdc8;--line:#f3e7ce30;--shadow:#68493125;}
+body[data-artist="30"]{background-image:radial-gradient(ellipse at 90% 12%,#cfa65b20,transparent 45%);}body[data-artist="30"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #cfa65b20;}
+body[data-artist="31"]{--bg:#e9e3d6;--ink:#383b2e;--panel:#526040;--accent:#c1a76d;--muted:#716451;--line:#383b2e30;--shadow:#52604025;}
+body[data-artist="31"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="31"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="31"] .seal{border-radius:4px;}
+body[data-artist="32"]{--bg:#24211c;--ink:#f1e9d9;--panel:#5f513d;--accent:#c9ab72;--muted:#c4bdc8;--line:#f1e9d930;--shadow:#5f513d25;}
+body[data-artist="32"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="32"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="32"] .seal{border-radius:4px;}
+body[data-artist="33"]{--bg:#171c20;--ink:#e9eff0;--panel:#354b52;--accent:#b7c9a2;--muted:#c4bdc8;--line:#e9eff030;--shadow:#354b5225;}
+body[data-artist="33"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="33"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="33"] .seal{border-radius:4px;}
+body[data-artist="34"]{--bg:#1b1815;--ink:#f6ead8;--panel:#752c32;--accent:#d9b563;--muted:#c4bdc8;--line:#f6ead830;--shadow:#752c3225;}
+body[data-artist="34"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="34"] .hero-photo{transform:rotate(2deg);border-bottom:7px solid var(--accent);}body[data-artist="34"] .crown{font-size:45px;}
+body[data-artist="35"]{--bg:#151515;--ink:#f0eee9;--panel:#56272b;--accent:#d9b9a1;--muted:#c4bdc8;--line:#f0eee930;--shadow:#56272b25;}
+body[data-artist="35"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="35"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="35"] .seal{border-radius:4px;}
+body[data-artist="36"]{--bg:#15212a;--ink:#eef3f7;--panel:#35596f;--accent:#d7ad78;--muted:#c4bdc8;--line:#eef3f730;--shadow:#35596f25;}
+body[data-artist="36"]{background-image:radial-gradient(ellipse at 90% 12%,#d7ad7820,transparent 45%);}body[data-artist="36"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #d7ad7820;}
+body[data-artist="37"]{--bg:#e8dfce;--ink:#36352e;--panel:#665c44;--accent:#bda47a;--muted:#716451;--line:#36352e30;--shadow:#665c4425;}
+body[data-artist="38"]{--bg:#1b1b29;--ink:#f6edf6;--panel:#59405b;--accent:#f0ac82;--muted:#c4bdc8;--line:#f6edf630;--shadow:#59405b25;}
+body[data-artist="39"]{--bg:#e9edcb;--ink:#252d25;--panel:#3c6141;--accent:#e7a755;--muted:#716451;--line:#252d2530;--shadow:#3c614125;}
+body[data-artist="39"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="39"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="39"] .seal{border-radius:4px;}
+body[data-artist="40"]{--bg:#eee1c9;--ink:#4b3c2c;--panel:#8e6746;--accent:#d0aa68;--muted:#716451;--line:#4b3c2c30;--shadow:#8e674625;}
+body[data-artist="41"]{--bg:#1a2225;--ink:#e6f1ee;--panel:#3d5d60;--accent:#a5d4b6;--muted:#c4bdc8;--line:#e6f1ee30;--shadow:#3d5d6025;}
+body[data-artist="41"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="41"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="41"] .seal{border-radius:4px;}
+body[data-artist="42"]{--bg:#eee6d5;--ink:#39322a;--panel:#9b3d32;--accent:#d8b153;--muted:#716451;--line:#39322a30;--shadow:#9b3d3225;}
+body[data-artist="42"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="42"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="42"] .seal{border-radius:4px;}
+body[data-artist="43"]{--bg:#e7e5df;--ink:#242424;--panel:#4f4b47;--accent:#bb322f;--muted:#716451;--line:#24242430;--shadow:#4f4b4725;}
+body[data-artist="43"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="43"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="43"] .seal{border-radius:4px;}
+body[data-artist="44"]{--bg:#e7ebd5;--ink:#23382c;--panel:#397447;--accent:#e0ba5d;--muted:#716451;--line:#23382c30;--shadow:#39744725;}
+body[data-artist="44"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="44"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="44"] .seal{border-radius:4px;}
+body[data-artist="45"]{--bg:#16191e;--ink:#e9edf5;--panel:#3d4b60;--accent:#a7b7cf;--muted:#c4bdc8;--line:#e9edf530;--shadow:#3d4b6025;}
+body[data-artist="45"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="45"] .hero-photo{transform:rotate(2deg);border-bottom:7px solid var(--accent);}body[data-artist="45"] .crown{font-size:45px;}
+body[data-artist="46"]{--bg:#142139;--ink:#f0f3fc;--panel:#3a4d7c;--accent:#f0c96d;--muted:#c4bdc8;--line:#f0f3fc30;--shadow:#3a4d7c25;}
+body[data-artist="46"]{background-image:radial-gradient(ellipse at 90% 12%,#f0c96d20,transparent 45%);}body[data-artist="46"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #f0c96d20;}
+body[data-artist="47"]{--bg:#f1e3e0;--ink:#493238;--panel:#8d4656;--accent:#d9aa78;--muted:#716451;--line:#49323830;--shadow:#8d465625;}
+body[data-artist="48"]{--bg:#1c2022;--ink:#f2f0e6;--panel:#344c4f;--accent:#e2b54c;--muted:#c4bdc8;--line:#f2f0e630;--shadow:#344c4f25;}
+body[data-artist="48"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="48"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="48"] .seal{border-radius:4px;}
+body[data-artist="49"]{--bg:#eee2d4;--ink:#402c2a;--panel:#9b3038;--accent:#d1aa7a;--muted:#716451;--line:#402c2a30;--shadow:#9b303825;}
+body[data-artist="49"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="49"] .hero-photo{transform:rotate(2deg);border-bottom:7px solid var(--accent);}body[data-artist="49"] .crown{font-size:45px;}
+body[data-artist="50"]{--bg:#141729;--ink:#edf0ff;--panel:#383d76;--accent:#a9afff;--muted:#c4bdc8;--line:#edf0ff30;--shadow:#383d7625;}
+body[data-artist="50"]{background-image:radial-gradient(ellipse at 90% 12%,#a9afff20,transparent 45%);}body[data-artist="50"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #a9afff20;}
+body[data-artist="51"]{--bg:#e8dfd2;--ink:#3b302b;--panel:#835241;--accent:#c8a16a;--muted:#716451;--line:#3b302b30;--shadow:#83524125;}
+body[data-artist="51"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="51"] .hero-photo{transform:rotate(-2deg);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--accent);}body[data-artist="51"] .seal{border-radius:4px;}
+body[data-artist="52"]{--bg:#171b2e;--ink:#eef0ff;--panel:#424e83;--accent:#b1bafb;--muted:#c4bdc8;--line:#eef0ff30;--shadow:#424e8325;}
+body[data-artist="52"] h1{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.065em;}
+body[data-artist="52"]{background-image:radial-gradient(ellipse at 90% 12%,#b1bafb20,transparent 45%);}body[data-artist="52"] .hero-photo{transform:rotate(-3deg);box-shadow:0 0 70px #b1bafb20;}
+body{color-scheme:light}h1{font-size:clamp(44px,7.5vw,112px);letter-spacing:-.05em;overflow-wrap:anywhere}body[data-artist="1"] h1{font-size:clamp(85px,12vw,160px)}.hero>div{min-width:0}.photo-label{gap:15px;line-height:1.6}.photo-label span:first-child{max-width:65%}.seal{font-size:8px;letter-spacing:1px}.members li{background:transparent}.value{overflow-wrap:anywhere}.tour{color:#fff4e5}.tour .label,.tour .number{color:#fff0c7}.tour-intro,.note{color:#f1e3dc}.tour li{white-space:normal}.tour-grid li{padding-right:12px}body[data-artist="3"] .hero-photo{background:linear-gradient(135deg,#ff8585,#eedf79,#8bd5a3,#8baee9,#c7a5ff);padding:9px 9px 30px}body[data-artist="3"] .photo-label{color:#171521;padding:0 15px}body[data-artist="39"] .hero-photo{border:3px solid var(--ink)}body[data-artist="46"] .hero-photo{background:linear-gradient(145deg,#b25a78,#405c9a,#467b6c)}@media(max-width:700px){.hero h1{font-size:clamp(42px,12vw,75px)}body[data-artist="1"] h1{font-size:100px}.hero-photo{max-width:380px}.value{font-size:clamp(17px,4.5vw,24px)}.back{font-size:11px}.seal{left:-18px;width:80px;height:80px}}
+</style></head>
+<body data-artist="{{.ID}}"><div class="wrap">
+<header><a class="brand" href="/">✳ groupie tracker<span>.</span></a><a class="back" href="/">← Tous les artistes</a></header>
+<main><section class="hero" aria-labelledby="artist-name"><div><span class="crown" aria-hidden="true">{{if eq .ID 1}}♛{{else if or (eq .ID 4) (eq .ID 9) (eq .ID 45)}}ϟ{{else if or (eq .ID 3) (eq .ID 50)}}△{{else}}✳{{end}}</span><span class="eyebrow">L’UNIVERS DE L’ARTISTE / {{.ID}}</span><h1 id="artist-name">{{.Name}}</h1><p class="tagline">{{if eq .ID 1}}Une scène. Une couronne. Un héritage immense.{{else if eq .ID 2}}Une vibration chaleureuse. Un horizon ouvert.{{else if eq .ID 3}}Au-delà du son, une autre dimension.{{else if eq .ID 4}}Les guitares en grand. Le volume aussi.{{else if eq .ID 5}}Des ombres, des contrastes, une voix.{{else if eq .ID 6}}Des nuances douces. Un rythme à soi.{{else if eq .ID 7}}Les mots au premier plan.{{else if eq .ID 8}}Chaque mot laisse une empreinte.{{else if eq .ID 9}}Haute tension. Plein volume.{{else if eq .ID 10}}Du grain, de la scène et du caractère.{{else if eq .ID 11}}La couleur prend le micro.{{else if eq .ID 12}}Une présence. Une signature.{{else if eq .ID 13}}Un autre paysage à chaque morceau.{{else if eq .ID 14}}Le rythme au cœur de la scène.{{else if eq .ID 15}}Une empreinte rock, à grande échelle.{{else if eq .ID 16}}Couleurs libres. Guitares sans frontières.{{else if eq .ID 17}}Quand la lumière suit le rythme.{{else if eq .ID 18}}Des ombres pourpres. Un son intense.{{else if eq .ID 19}}Toute l’énergie de la scène.{{else if eq .ID 20}}Les cordes racontent la suite.{{else if eq .ID 21}}Un univers qui déborde du cadre.{{else if eq .ID 22}}Prendre de la hauteur. Suivre le son.{{else if eq .ID 23}}Un souffle large, un horizon nouveau.{{else if eq .ID 24}}Une traversée entre ombre et couleur.{{else if eq .ID 25}}Les idées se posent sur le rythme.{{else if eq .ID 26}}Une voix, des mots, un instant.{{else if eq .ID 27}}La voix devient paysage.{{else if eq .ID 28}}La nuit se dessine en pulsations.{{else if eq .ID 29}}Des textures chaudes. Une allure libre.{{else if eq .ID 30}}Un voyage dans les textures du son.{{else if eq .ID 31}}Le récit au rythme des mots.{{else if eq .ID 32}}Un son brut, une scène ouverte.{{else if eq .ID 33}}Des lignes nettes. Des mots qui restent.{{else if eq .ID 34}}Des roses, du métal, de la scène.{{else if eq .ID 35}}Le contraste fait monter la voix.{{else if eq .ID 36}}Des lignes d’horizon à explorer.{{else if eq .ID 37}}L’élégance dans les angles.{{else if eq .ID 38}}L’énergie déborde du refrain.{{else if eq .ID 39}}Un monde à part, hors du cadre.{{else if eq .ID 40}}Un horizon doré. Le son en liberté.{{else if eq .ID 41}}Les textures se croisent, l’énergie reste.{{else if eq .ID 42}}La couleur, le groove et l’instinct.{{else if eq .ID 43}}Le rythme frappe. Les mots restent.{{else if eq .ID 44}}Une énergie qui refuse de rentrer dans le rang.{{else if eq .ID 45}}Acier, contraste et puissance.{{else if eq .ID 46}}Une constellation de couleurs et de sons.{{else if eq .ID 47}}Des lignes pop, un rythme qui accroche.{{else if eq .ID 48}}Deux silhouettes. Tout un univers.{{else if eq .ID 49}}L’attitude entre en scène.{{else if eq .ID 50}}Le son prend une autre dimension.{{else if eq .ID 51}}Du relief, du volume, de la scène.{{else if eq .ID 52}}Les lumières suivent les pulsations.{{else}}Chaque artiste, un univers.{{end}}</p><p class="lede">{{if eq .ID 1}}Entre énergie rock et grandeur théâtrale, entre dans l’univers de Queen et retrouve les informations du groupe.{{else}}Explore l’univers de {{.Name}} : les membres, le premier album et les traces de la scène.{{end}}</p></div><div class="hero-photo"><img src="{{.Image}}" alt="Visuel de {{.Name}}"><div class="photo-label"><span>{{.Name}}</span><span>EST. {{.CreationDate}}</span></div><div class="seal" aria-hidden="true">{{if eq .ID 1}}THE<br>ROYAL<br>COLLECTION{{else}}THE<br>ARTIST<br>COLLECTION{{end}}</div></div></section>
+<section class="stats" aria-label="L’artiste en chiffres"><div class="stat"><span class="label">DÉBUT DE L’AVENTURE</span><span class="value">{{.CreationDate}}</span></div><div class="stat"><span class="label">PREMIER ALBUM</span><span class="value">{{.FirstAlbum}}</span></div><div class="stat"><span class="label">MEMBRES RÉPERTORIÉS</span><span class="value">{{len .Members}}</span></div></section>
+<section class="members-section" aria-labelledby="members-title"><div class="section-title"><span class="number">01 /</span><h2 id="members-title">Derrière la légende.</h2></div><ul class="members">{{range .Members}}<li>{{.}}</li>{{end}}</ul></section>
+<section class="tour" aria-labelledby="tour-title"><div class="section-title"><span class="number">02 /</span><h2 id="tour-title">Les traces de la scène.</h2></div><p class="tour-intro">Les lieux et les dates de concerts répertoriés.</p><div class="tour-grid"><div><span class="label">LIEUX</span><ul>{{range .Location}}<li>{{.}}</li>{{else}}<li>Aucun lieu renseigné.</li>{{end}}</ul></div><div><span class="label">DATES</span><ul>{{range .Date}}<li>{{.}}</li>{{else}}<li>Aucune date renseignée.</li>{{end}}</ul></div></div><p class="note">Les lieux et les dates sont présentés séparément, tels que fournis par la source.</p></section></main>
+<footer><span>groupie tracker. — Chaque artiste, un univers.</span><span>Données : Groupie Trackers API</span></footer></div></body></html>
